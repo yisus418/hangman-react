@@ -12,7 +12,9 @@ function App() {
   const checkLetter = (letter: string) => {
     console.log(letter);
 
-    setAttempts(attempts + 1);
+    let result: number = Math.min(attempts + 1, 9);
+
+    setAttempts(result);
   }
 
   return (

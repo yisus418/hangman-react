@@ -4,17 +4,26 @@ import { letters } from "./helpers/letters";
 import "./App.css";
 
 function App() {
-  const [word] = useState("React");
-  const [hiddenWord] = useState("_ ".repeat(word.length));
+  const [word] = useState("React".toUpperCase());
+  const [hiddenWord, setHiddenWord] = useState("_ ".repeat(word.length));
 
   const [attempts, setAttempts] = useState(0);
 
   const checkLetter = (letter: string) => {
-    console.log(letter);
+    if (word.includes(letter)) {
+      const hiddenWordArray = hiddenWord.split(" ");
 
-    let result: number = Math.min(attempts + 1, 9);
+      for (let i = 0; i < word.length; i++) {
+        if (word[i] === letter) {
+          hiddenWordArray[i] = letter;
+        }
+      }
 
-    setAttempts(result);
+      setHiddenWord(hiddenWordArray.join(" "));
+    } else {
+      let result: number = Math.min(attempts + 1, 9);
+      setAttempts(result);
+    }
   }
 
   return (

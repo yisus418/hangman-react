@@ -27,6 +27,8 @@ function App() {
   }, [hiddenWord]);
 
   const checkLetter = (letter: string) => {
+    if (lose) return;
+
     if (word.includes(letter)) {
       const hiddenWordArray = hiddenWord.split(" ");
 

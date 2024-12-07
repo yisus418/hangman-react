@@ -5,7 +5,7 @@ import { getRandomWord } from "./helpers/getRandomWords";
 import "./App.css";
 
 function App() {
-  const [word] = useState(getRandomWord());
+  const [word, setWord] = useState(getRandomWord());
   const [hiddenWord, setHiddenWord] = useState("_ ".repeat(word.length));
   const [attempts, setAttempts] = useState(0);
   const [lose, setLose] = useState(false);
@@ -48,6 +48,16 @@ function App() {
     }
   }
 
+  const newGame = () => {
+    const newWord = getRandomWord();
+
+    setWord(newWord);
+    setHiddenWord("_ ".repeat(newWord.length));
+    setAttempts(0);
+    setLose(false);
+    setWon(false);
+  }
+
   return (
     <>
       <div>
@@ -80,6 +90,12 @@ function App() {
             ))
           }
         </div>
+
+        <br />
+        <br />
+
+        {/* Como newGame no necesita ningun argumento lo podemos mandar como referencia de la función */}
+        <button onClick={ newGame }>¿Nuevo juego?</button>
       </div>
     </>
   );

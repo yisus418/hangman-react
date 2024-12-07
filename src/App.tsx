@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react"; /* hooks */
 import { HangImage } from "./components/HangImage";
 import { letters } from "./helpers/letters";
 import "./App.css";
@@ -6,8 +6,15 @@ import "./App.css";
 function App() {
   const [word] = useState("React".toUpperCase());
   const [hiddenWord, setHiddenWord] = useState("_ ".repeat(word.length));
-
   const [attempts, setAttempts] = useState(0);
+  const [lose, setLose] = useState(false);
+
+  // Determinar si el jugador perdio
+  useEffect( () => {
+    if (attempts >= 9) {
+      setLose(true);
+    }
+  }, [attempts]);
 
   const checkLetter = (letter: string) => {
     if (word.includes(letter)) {
@@ -37,6 +44,11 @@ function App() {
 
         {/* Contador intentos */}
         <h3 className="text-center">Intentos: { attempts }</h3>
+
+        {/* Mensaje cuando el jugador pierde */}
+        {
+          lose ? <h2 className="text-center">Perdió { word }</h2> : ""
+        }
 
         {/* Botones de letras */}
         <div className="flex justify-center items-center">

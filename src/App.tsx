@@ -8,6 +8,7 @@ function App() {
   const [hiddenWord, setHiddenWord] = useState("_ ".repeat(word.length));
   const [attempts, setAttempts] = useState(0);
   const [lose, setLose] = useState(false);
+  const [won, setWon] = useState(false);
 
   // Determinar si el jugador perdio
   useEffect( () => {
@@ -15,6 +16,15 @@ function App() {
       setLose(true);
     }
   }, [attempts]);
+
+  // Determinar si el jugador gano
+  useEffect( () => {
+    const currentHiddenWord = hiddenWord.split(" ").join("");
+
+    if (currentHiddenWord === word) {
+      setWon(true);
+    }
+  }, [hiddenWord]);
 
   const checkLetter = (letter: string) => {
     if (word.includes(letter)) {
@@ -48,6 +58,11 @@ function App() {
         {/* Mensaje cuando el jugador pierde */}
         {
           lose ? <h2 className="text-center">Perdió { word }</h2> : ""
+        }
+
+        {/* Mensaje cuando el jugador gana */}
+        {
+          won ? <h2 className="text-center">Felicidades, usted ganó</h2> : ""
         }
 
         {/* Botones de letras */}

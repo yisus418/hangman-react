@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"; /* hooks */
 import { HangImage } from "./components/HangImage";
 import { letters } from "./helpers/letters";
+import { getRandomWord } from "./helpers/getRandomWords";
 import "./App.css";
 
 function App() {
-  const [word] = useState("React".toUpperCase());
+  const [word] = useState(getRandomWord());
   const [hiddenWord, setHiddenWord] = useState("_ ".repeat(word.length));
   const [attempts, setAttempts] = useState(0);
   const [lose, setLose] = useState(false);

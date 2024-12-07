@@ -30,6 +30,8 @@ function App() {
   const checkLetter = (letter: string) => {
     if (lose) return;
 
+    if (won) return;
+
     if (word.includes(letter)) {
       const hiddenWordArray = hiddenWord.split(" ");
 

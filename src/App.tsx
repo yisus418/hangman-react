@@ -94,8 +94,10 @@ function App() {
         <br />
         <br />
 
-        {/* Como newGame no necesita ningun argumento lo podemos mandar como referencia de la función */}
-        <button onClick={ newGame }>¿Nuevo juego?</button>
+        <div className="flex justify-center">
+          {/* Como newGame no necesita ningun argumento lo podemos mandar como referencia de la función */}
+          <button onClick={ newGame }>¿Nuevo juego?</button>
+        </div>
       </div>
     </>
   );

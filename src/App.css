@@ -1,0 +1,29 @@
+button {
+  margin: 5px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+h3 {
+  line-height: 1.1;
+}
+
+/* Flexbox utility classes */
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
+}

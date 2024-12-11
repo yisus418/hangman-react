@@ -1,6 +1,8 @@
-// src/helpers/getRandomWords.ts
+function removeAccents(str: string): string {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 
-let words: string[] = [
+const words: string[] = [
   "manzana",
   "perro",
   "pelota",
@@ -36,5 +38,5 @@ let words: string[] = [
 export function getRandomWord(): string {
   const randomIndex: number = Math.floor(Math.random() * words.length);
 
-  return words[randomIndex];
+  return removeAccents(words[randomIndex].toUpperCase());
 };
